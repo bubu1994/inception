@@ -499,7 +499,7 @@ Utilisation:
 
 0. Initialiser le Swarm  
 `docker swarm init`
-Désigne la machine hôte comme le premier noeud gestionnaire d'un nouveau cluster Swarm. Nécessaire pour créer des secrets.
+Désigne la machine hôte comme le premier noeud gestionnaire d'un nouveau cluster Swarm. Nécessaire pour créer des secrets.<br><br>
   
   
 1. Créer le secret  
@@ -513,7 +513,7 @@ ou
 
 `docker secret ls` liste les secrets
 
-Stocker un secret dans un fichier sur la machine hôte n'est pas recommandé en production.
+Stocker un secret dans un fichier sur la machine hôte n'est pas recommandé en production.<br><br>
   
   
 2. Associer le secret à un service via docker compose
@@ -527,13 +527,13 @@ services:
 ```
 
 Le paramètre `external: true` indique que le secret est déjà créé dans le cluster Swarm.
-Si un fichier est défini dans la section 'secrets' du docker-compose, docker créera le secret automatiquement sous le nom 'nom_de_mon_app_nom_du_fichier' (nom de votre app + underscore + fichier)
+Si un fichier est défini dans la section 'secrets' du docker-compose, docker créera le secret automatiquement sous le nom 'nom_de_mon_app_nom_du_fichier' (nom de votre app + underscore + fichier)<br><br>
   
   
 3. Accéder au secret dans le conteneur  
 Accessible dans le répertoire `/run/secrets/` avec le même nom que le secret.
 
-`cat /run/secrets/ma_cle_ssh`
+`cat /run/secrets/ma_cle_ssh`<br><br>
   
   
 4. Déployer votre application  
@@ -867,31 +867,32 @@ Pour résumer :
 - **Interface** = moyens d’interagir (CLI/GUI).
 - **Services** = programmes de fond qui rendent l’OS pratique.
 
-+-----------------------------+
-|   Applications / Programmes |
-+-----------------------------+
-|   Interface utilisateur              |
-|   (Shell, GUI, etc.)                   |
-+-----------------------------+
-|   Userland (commandes,       |
-|   bibliothèques système,       |
-|   services/daemons)              |
-+-----------------------------+
-|   Noyau (kernel)                      |
-|   - Gestion mémoire               |
-|   - Gestion processus            |
-|   - Système de fichiers          |
-|   - Gestion périphériques      |
-|   - Sécurité & permissions     |
-+-----------------------------+
-|   Matériel (CPU, RAM, I/O)     |
-+-----------------------------+
++-----------------------------+  
+|   Applications / Programmes |  
++-----------------------------+  
+|   Interface utilisateur     |  
+|   (Shell, GUI, etc.)        |  
++-----------------------------+  
+|   Userland (commandes,      |  
+|   bibliothèques système,    |  
+|   services/daemons)         |  
++-----------------------------+  
+|   Noyau (kernel)            |  
+|   - Gestion mémoire         |  
+|   - Gestion processus       |  
+|   - Système de fichiers     |  
+|   - Gestion périphériques   |  
+|   - Sécurité & permissions  |  
++-----------------------------+  
+|   Matériel (CPU, RAM, I/O)  |  
++-----------------------------+  
 
 - Le matériel est contrôlé par le noyau.
 - Le userland (outils, bibliothèques, services) repose sur le noyau.
 - L’interface (CLI/GUI) permet aux utilisateurs d’interagir.
 - Enfin, les applications utilisent tout cela pour fonctionner.
 
+---
 ---
 
 ## Construction de mon infrastructure inception
