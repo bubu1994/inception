@@ -497,18 +497,18 @@ Docker secrets est une bien meilleure option que les variables d'environnement p
 
 Utilisation:
 
-0. Initialiser le Swarm
+0. Initialiser le Swarm  
 `docker swarm init`
 Désigne la machine hôte comme le premier noeud gestionnaire d'un nouveau cluster Swarm. Nécessaire pour créer des secrets.
   
   
-1. Créer le secret
+1. Créer le secret  
 `docker secret create mon_secret /chemin/vers/mon_fichier_secret.txt`
-crée un secret 'mon_secret' dans Docker Swarm à partir d'un fichier. 
+crée un secret 'mon_secret' dans Docker Swarm à partir d'un fichier.
 
 ou
 
-`echo "mon_mot_de_passe_secret" | docker secret create mon_secret -`
+`echo "mon_mot_de_passe_secret" | docker secret create mon_secret -`  
 (`-`) indique que le contenu du secret doit être lu depuis STDIN. Utile si vous ne voulez pas stocker les secrets dans des fichiers.
 
 `docker secret ls` liste les secrets
