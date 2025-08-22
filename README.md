@@ -1,7 +1,7 @@
 
 Ce repo contient mes notes prises un peu en vrac lors de la réalisation du projet inception de l'école 42.
 Beaucoup de texte vient de chatgpt, claude, gemini.
-Certains paragraphes se répètent, certains ne sont pas pertinents dans le contexte de docker, certains sont mieux compréhensibles après en avoir lu d'autres.
+Certains paragraphes se répètent, certains ne sont pas pertinents dans le contexte de docker, certains sont mieux compréhensibles après en avoir lu d'autres, certains sont peut-être erronés.
 
 
 Pour inception, je vous suggère de:
@@ -501,8 +501,7 @@ Utilisation:
 `docker swarm init`
 Désigne la machine hôte comme le premier noeud gestionnaire d'un nouveau cluster Swarm. Nécessaire pour créer des secrets.
 
-
-
+  
 1. Créer le secret
 `docker secret create mon_secret /chemin/vers/mon_fichier_secret.txt`
 crée un secret 'mon_secret' dans Docker Swarm à partir d'un fichier. 
@@ -516,8 +515,7 @@ ou
 
 Stocker un secret dans un fichier sur la machine hôte n'est pas recommandé en production.
 
-
-
+  
 2. Associer le secret à un service via docker compose
 
 `version: '3.8'`  
@@ -535,15 +533,13 @@ Stocker un secret dans un fichier sur la machine hôte n'est pas recommandé en 
 Le paramètre `external: true` indique que le secret est déjà créé dans le cluster Swarm.
 Si un fichier est défini dans la section 'secrets' du docker-compose, docker créera le secret automatiquement sous le nom 'nom_de_mon_app_nom_du_fichier' (nom de votre app + underscore + fichier)
 
-
-
+  
 3. Accéder au secret dans le conteneur
 Accessible dans le répertoire `/run/secrets/` avec le même nom que le secret.
 
 `cat /run/secrets/ma_cle_ssh`
 
-
-
+  
 4. Déployer votre application
 `docker stack deploy -c docker-compose.yml nom_de_mon_app`
 
