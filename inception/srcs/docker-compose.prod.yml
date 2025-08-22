@@ -1,0 +1,81 @@
+
+
+services:
+  
+  mariadb:
+    image: mariadb:prod
+    env_file:                             
+      - .env
+    secrets:
+      - mysql_password
+    volumes:
+      - mariadb_vol:/var/lib/mysql
+    networks:
+      - inception
+    deploy:
+      restart_policy:
+        condition: any
+      replicas: 1
+  
+  wordpress:
+    image: wordpress:prod
+    env_file:                             
+      - .env
+    secrets:
+      - mysql_password
+      - wp_admin_password
+      - wp_user_password
+    volumes:
+     - wordpress_vol:/var/www/wordpress
+    depends_on:
+      - mariadb
+    networks:
+      - inception
+    deploy:
+      restart_policy:
+        condition: any
+      replicas: 1
+
+  nginx:
+    image: nginx:prod
+    ports:
+      - 443:443
+    volumes:
+      - wordpress_vol:/var/www/wordpress
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    deploy:
+      restart_policy:
+        condition: any
+      replicas: 1
+
+secrets:
+  mysql_password:
+    external: true
+  wp_admin_password:
+    external: true
+  wp_user_password:
+    file: ../secrets/wp_user_password.txt
+    external: false
+
+networks:
+  inception:
+    name: inception_reso
+    driver: overlay
+    attachable: true
+
+volumes:
+  mariadb_vol:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/gebuqaj/data/mariadb_vol
+  wordpress_vol:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/gebuqaj/data/wordpress_vol

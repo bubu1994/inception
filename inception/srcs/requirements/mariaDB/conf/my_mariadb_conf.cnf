@@ -1,0 +1,19 @@
+
+[mysqld] 							# les paramètres sous cette section s'appliquent au SERVEUR de mariaDB
+user=mysql							# Spécifie l'utilisateur système sous lequel le processus mysqld (le serveur MariaDB) doit s'exécuter. C'est une mesure de sécurité pour éviter que le serveur ne tourne avec des privilèges excessifs (comme root)
+port=3306							# port d'écoute. "Je suis MariaDB, et vous pouvez me trouver sur le port 3306 de cette machine/conteneur." Ce port du conteneur devra être mappé au port de l'hôte
+basedir=/usr						# indique le répertoire de l'installation de mariaDB
+datadir=/var/lib/mysql				# emplacement des fichiers des bases de données. Ce dossier est aussi le dossier par défaut.
+socket=/run/mysqld/mysqld.sock		# socket unix. Point de connexion local que les clients utiliseront lorsqu'ils se connectent depuis la même machine
+bind-address=0.0.0.0				# Indique à MariaDB d'écouter les connexions sur toutes les interfaces réseau disponibles à l'intérieur du conteneur.
+skip-networking=0                   # Empêche l'activation de l'option 'skip-networking' (qui désactive le réseau TCP/IP) dans le fichier de configuration de base de mariaDB lu en premier.
+
+[client]							# Cette section définit les valeurs par défaut de connexion des clients mariaDB
+port=3306							# Indique aux clients MariaDB quel port ils doivent essayer de contacter par défaut."Quand je cherche un serveur MariaDB, je vais par défaut frapper à la porte 3306." 
+socket=/run/mysqld/mysqld.sock		# Déjà défini dans [mysqld]. Il établit une cohérence entre ce que le serveur attend et ce que les clients essaient par défaut.
+
+
+# Chaque programme client MariaDB a ses propres valeurs par défaut pour la socket et le port. Ces valeurs peuvent varier selon ... En définissant socket et port dans la section client, on surcharge explicitement et on s'assure des valeurs de connexion du client
+# La section [client] dans le fichier de configuration de MariaDB n'est pas strictement indispensable pour que le serveur fonctionne.
+# Les clients peuvent toujours se connecter au serveur sans la section [client], mais ils devront le faire en spécifiant les informations de connexions de manière explicite via les arguments en ligne de commandes ou via les variables d'environnement.
+# la section [client] est extrêmement utile car elle définit les valeurs par défaut pour les clients. Cela rend les connexions beaucoup plus pratiques. Par commodité Au lieu de taper -h, -P, ou -S à chaque fois, le client lit ces valeurs par défaut dans le fichier de configuration. Il vous suffit de taper mysql -u mon_utilisateur -p. Cohérence : Elle assure que tous les clients qui lisent ce fichier utilisent les mêmes paramètres de connexion par défaut, réduisant les erreurs de configuration.

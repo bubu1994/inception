@@ -1,3 +1,4 @@
+
 Ce repo contient mes notes prises un peu en vrac lors de la réalisation du projet inception de l'école 42.
 Beaucoup de texte vient de chatgpt, claude, gemini.
 Certains paragraphes se répètent, certains ne sont pas pertinents dans le contexte de docker, certains sont mieux compréhensibles après en avoir lu d'autres.
@@ -25,33 +26,32 @@ https://developer.wordpress.org/advanced-administration/before-install/howto-ins
 
 # INDEX
 
-[[#Docker - Introduction]]
-[[#Les composants Docker]]
-[[#Une seule application pour un conteneur]]
-[[#Instructions principales du Dockerfile]]
-[[#Commandes Docker]]
-[[#Comment s'arrête un conteneur ? En arrêtant le PID1]]
-[[#Alpine et Debian]]
-[[#Le serveur web Nginx]]
-[[#MariaDB]]
-[[#Wordpress et php-fpm]]
-[[#Docker Swarm]]
-[[#Docker Secrets]]
+[Docker - Introduction](#docker---introduction)
+[Les composants Docker](#les-composants-docker)
+[Une seule application pour un conteneur](#une-seule-application-pour-un-conteneur)
+[Instructions principales du Dockerfile](#instructions-principales-du-dockerfile)
+[Commandes Docker](#commandes-docker)
+[Comment s'arrête un conteneur ? En arrêtant le PID1](#comment-sarrête-un-conteneur-en-arrêtant-le-pid1)
+[Alpine et Debian](#alpine-et-debian)
+[Le serveur web Nginx](#le-serveur-web-nginx)
+[MariaDB](#mariadb)
+[Wordpress et php-fpm](#wordpress-et-php-fpm)
+[Docker Swarm](#docker-swarm)
+[Docker Secrets](#docker-secrets)
 
-[[#Protocole]]
-[[#HTTP]]
-[[#SSL/TLS]]
-[[#Pile réseau et TCP/IP]]
-[[#CGI]]
-[[#Socket]]
-[[#DNS et résolution locale]]
-[[#Interface]]
-[[#API]]
-[[#OS (Operating system)]]
+[Protocole](#protocole)
+[HTTP](#http)
+[SSL/TLS](#ssltls)
+[Pile réseau et TCP/IP](#pile-réseau-et-tcpip)
+[CGI](#cgi)
+[Socket](#socket)
+[DNS et résolution locale](#dns-et-résolution-locale)
+[Interface](#interface)
+[API](#api)
+[OS (Operating system)](#os-operating-system)
 
-[[#Construction de mon infrastructure inception]]
-[[#Fonctionnement d'Inception]]
-
+[Construction de mon infrastructure inception](#construction-de-mon-infrastructure-inception)
+[Fonctionnement d'Inception](#fonctionnement-dinception)
 
 
 
@@ -984,3 +984,5 @@ Pour résumer :
 - PHP-FPM exécute index.php, interroge mariadb sur le port 3306 du conteneur mariadb pour récolter les données et renvoie le résultat (du code HTML) à nginx.
 - Nginx sert le résultat final au navigateur via la connexion HTTPS sécurisée.
 - Poltronesofa, autentica qualita. Et voilà!
+
+

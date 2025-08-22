@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Mon premier site web</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="swag.css">
+	</head>
+<body>
+	<header>
+		Ce site web a été réalisé dans le cadre du projet inception de l'école 42. Il présente une introduction aux fondamentaux du développement web avec HTML et CSS. Il constitue un point de départ et ne prétend pas couvrir l'ensemble des fonctionnalités et spécificités de ces langages.
+	</header>
+	<div id="html-header">
+		HTML (HyperText Markup Language)
+	</div>
+	<section class="html_part">
+		<div class="text">
+			HTML est un language de balisage utilisé pour structurer le contenu des pages web. Une balise est un mot-clef entouré de chevrons. La plupart fonctionnent par paires (une balise ouvrante et une balise fermante).
+		</div>
+		<div class="title">
+			Exemple d'un fichier html
+		</div>
+		<div class="text">
+			<pre class="code-block">
+
+	&lt;!DOCTYPE html&gt;
+	&lt;html&gt;
+		&lt;head&gt;
+			&lt;meta charset="utf-8"&gt;
+			&lt;title&gt;Bonjour&lt;/title&gt;
+		&lt;/head&gt;
+	&lt;body&gt;
+		&lt;p&gt;Bonjour&lt;/p&gt;
+	&lt;/body&gt;
+	&lt;/html&gt;
+			</pre>
+			<ul>
+				<li>&lt;!DOCTYPE html&gt; : indique qu’on utilise HTML5.</li>
+				<li>&lt;html&gt; : racine du document HTML.</li>
+				<li>&lt;head&gt; : section contenant les métadonnées (titre, encodage, etc.).</li>
+				<li>&lt;meta charset="UTF-8"&gt; : définit l’encodage. UTF-8 englobe tous les caractères.</li>
+				<li>&lt;title&gt; : le texte affiché dans l’onglet du navigateur.</li>
+				<li>&lt;body&gt; : le contenu visible de la page.</li>
+				<li>&lt;p&gt; : 'p' = paragraphe. Indique au navigateur que le contenu qu'elle englobe doit être affiché comme un bloc de texte distinct.</li>
+			</ul>
+			<br>
+			Pour exécuter (ou plutôt afficher) un fichier HTML, il suffit de l’ouvrir dans un navigateur web.
+			<ol>
+				<li>Double-cliquer sur le fichier avec l'extension html.</li>
+				<li>Clic droit > Ouvrir avec un navigateur web (firefox, chrome, etc...)</li>
+				<li>Depuis un éditeur comme VS Code, installer l'extension Live Server. Clic-droit sur le fichier et open with Live Server. La page se rechargera automatiquement à chaque modification.</li>
+			</ol>
+			<p>On peut voir le code d'un fichier html en appuyant sur F12 ou clique-droit et Inspecter.</p>
+		</div>
+		<div class=" title">
+			Quelques balises
+		</div>
+		<div class="text">
+			&ltbr&gt = break. Insère un retour à la ligne.<br>
+			<hr>&lthr&gt = horizontal rule. Crée une ligne horizontale.<br>
+			<strong>&ltstrong&gt met le texte en gras. Indique que ce texte a une importance particulière.</strong><br>
+			<del>&ltdel&gt = delete. Indique au navigateur que le texte n'est plus pertinent et à supprimer.</del><br>
+			<mark>&ltmark&gt marque le texte</mark><br>
+			<pre>&ltpre&gt = preformated text. 
+	Affiche le texte exactement tel qu'il est écrit dans le code source,
+	en conservant les espaces, tabulations et sauts à la ligne.</pre>
+			&ltabbr&gt = abbreviation. <abbr title="HyperText Markup Language">HTML</abbr>
+			<details><summary>&ltsummary&gt</summary>&ltdetails&gt cache un texte</details>
+			<i>&lti&gt = italique</i><br>
+			<q>&ltq&gt = quote</q><br>
+			<cite>&ltcite&gt met le texte en italique. Sert à citer un document, film, etc</cite>
+			<br>
+			<div id="semantic-box">
+				<h3>
+					La sémantique et la structure du code sont essentielles en HTML.
+				</h3>
+				<p>
+					Définition de sémantique: Étude du sens, de la signification des signes, notamment dans le langage.
+				</p>
+				<p>
+					Les moteurs de recherche comprennent mieux la hiérarchie et l'importance du contenu grâce aux balises sémantiques ce qui améliore le <strong>référencement</strong> dans les résultats de recherche.
+					Par exemple, &lti&gt et &ltcite&gt ont le même rendu visuel, mais ne signifient pas la même chose, ne seront pas interprétés de la même manière par les navigateurs.
+				</p>
+				<p>
+					Un code bien structuré avec des balises appropriées facilite la <strong>compatibilité</strong> entre différents navigateurs, appareils et tailles d'écran, ainsi que la <strong>maintenabilité</strong> du code, c'est-à-dire la lecture, la compréhension et la modification du code par les développeurs, réduisant les erreurs et accélérant le développement.
+				</p>
+			</div>
+			<ol  class="list-decimal list-inside" type="I">
+				<li>&ltol&gt = ordered list. Crée une liste numérotée.</li>
+				<li>&ltol type="I"&gt. Les chiffres romains sont utilisés.</li>
+				<li>&ltul&gt = unordered list.</li>
+				<li>&ltli&gt = list item.</li>
+			</ol>
+			<p>
+				<a href="https://google.com" target="_blank" title="site web lambda">&lta href=https://google.com" target="_blank"&gt</a>. a = address. href = hypertext reference. 'target' ouvre la page web dans un nouvel onglet.
+			</p>
+			<p class="bigger-bottom-margin">
+				&ltimg src="images/luffy2.jpeg" alt="Affiche un texte à la place de l'image si elle n'est pas trouvée" height="200"&gt
+				<br><img src="images/luffy2.jpeg" alt="Affiche un texte à la place de l'image si elle n'est pas trouvée" height="200">
+			</p>
+			<p>
+				&ltaudio src="audio/gardens-stylish-chill-303261.mp3" controls type="audio/mp3"&gt
+				<audio src="audio/gardens-stylish-chill-303261.mp3" controls type="audio/mp3"></audio>
+			</p>
+		</div>
+	</section>
+	<div id="css-header">
+		CSS (Cascading Style Sheets)
+	</div>
+	<section class="css_part">
+		<div class="text">
+			CSS est un langage qui sert à définir le <del>swag</del> style et la mise en forme des pages HTML : couleurs, polices, marges, disposition, etc.
+		</div>
+		<div class="title second">
+			Intégrer un fichier CSS au fichier HTML
+		</div>
+		<div class="text">
+			À l'intérieur de la balise &lthead&gt, utiliser la balise &ltlink rel="stylesheet" href="mon_fichier.css"&gt
+			<pre class="code-block">
+
+	&lt;head&gt;
+		&lt;meta charset="utf-8"&gt;
+		&lt;title&gt;Mon premier site web&lt;/title&gt;
+		&lt;link rel="stylesheet" href="mon_fichier_style.css"&gt;
+	&lt;/head&gt;
+			</pre>
+			<ul>
+				<li>&ltlink&gt permet d'associer un fichier externe de style au document HTML</li>
+				<li>L’attribut rel="stylesheet" (rel = relation) précise qu’il s’agit d’une feuille de style.</li>
+				<li>L’attribut href="mon_fichier.css" (hypertext reference) indique le chemin vers le fichier CSS.</li>
+			</ul>
+		</div>
+		<div class="title second">
+			Exemples
+		</div>
+		<div class="text">
+			Le CSS utilise un système de sélecteurs et de propriétés. Les sélecteurs identifient quels éléments HTML styliser. Les propriétés définissent comment ces éléments doivent apparaître.
+		</div>
+		<div class="text">
+			Exemple 1: Sélecteur d'élément.<br>
+			Les propriétés 'background-color' et 'margin' définies dans p{} s'appliquent à toutes les balises &ltp&gt
+			<pre class="code-block">
+
+	p {
+		/*propriété: valeur*/
+		background-color: blue;
+		margin: 30px;
+	}
+			</pre>
+		</div>
+		<div class="text">
+			Exemple 2: Sélecteur de classe.<br>
+			Il cible tous les éléments HTML ayant <code>class="gras-et-rouge"</code><br>
+			Dans fichier CSS:<br>
+			<pre class="code-block">
+
+	.gras-et-rouge {
+		font-weight: bold;
+		color: red;
+	}
+			</pre>
+			<span class="gras-et-rouge">
+				Sélecteur de classe avec l'élément html 'span' dans fichier HTML:
+			</span>
+			<pre class="code-block">
+
+	&ltspan class="gras-et-rouge"&gt
+		Sélecteur de classe avec l'élément html 'span' dans fichier HTML:
+	&lt/span&gt
+			</pre>
+		</div>
+		<div class="text">
+			Exemple 3: Sélecteur d'identifiant (ID).<br>
+			L'utilisation doit être unique, contrairement au sélecteur de classe.<br>
+			Utilisez un ID si vous voulez proposer une navigation vers des sections de votre site.
+		<pre class="code-block">
+
+	#style-unique {
+		font-family: 'Fredericka the Great', cursive;
+		font-size: 1.5em;
+		color: rgb(163, 124, 25);
+	}
+			</pre>
+			<span id="style-unique">
+				Sélecteur d'ID avec l'élément html 'span' dans fichier HTML:
+			</span>
+			<pre class="code-block">
+
+	&ltspan id="style-unique"&gt
+		Sélecteur d'ID avec l'élément html 'span' dans fichier HTML:
+	&lt/span&gt
+			</pre>
+		</div>
+		<div class="text">
+			Exemple 4: Sélecteurs combinés.<br>
+			Sélecteurs qui associent plusieurs éléments en précisant leur relation dans le document HTML.<br><br>
+			<ol class="list-decimal list-inside bottom-margin">
+				<li>
+					Sélecteur combiné de classe.
+					<pre class="code-block">
+
+	div.title {
+		background-color: bisque;
+		padding: 15px;
+		border-radius: 10px;
+		border: 5px double rgb(51, 51, 17);
+		font-weight: bold;
+	}
+
+	div.title.second {
+		background-color: rgb(148, 148, 239);
+	}
+					</pre>
+					Le sélecteur <code>div.title.second</code> cible tous les éléments &ltdiv&gt ayant à la fois les classes <code>title</code> et <code>second</code>.
+					<pre class="code-block">
+
+	&ltdiv class="title second"&gtTitre secondaire&lt/div&gt
+					</pre>
+					La classe <code>title.second</code> "hérite" de la classe <code>title</code>. Ayant une plus grande spécifité, sa propriété <code>background-color</code> écrase l'autre.  
+				</li>
+				<li>Sélecteur descendant.
+					<pre class="code-block">
+
+	div p {
+		color: blue;
+	}
+					</pre>
+					Tous les &ltp&gt à l'intérieur d’un &ltdiv&gt seront bleus, peu importe le niveau de profondeur.
+				</li>
+				<li>Sélecteur enfant direct.
+					<pre class="code-block">
+
+	ul > li {
+		list-style: square;
+	}
+					</pre>
+					Cible uniquement les &ltli&gt qui sont enfants immédiats de &ltul&gt.
+				</li>
+				<li>
+					Sélecteur de frère adjacent.
+					<pre class="code-block">
+
+	h1 + p {
+		margin-top: 0;
+	}
+					</pre>
+					Cible le premier &ltp&gt qui suit un &lth1&gt.
+				</li>
+				<li>
+					Sélecteur général de frères.
+					<pre class="code-block">
+
+	h1 ~ p {
+		color: gray;
+	}
+					</pre>
+					Tous les &ltp&gt qui suivent un &lth1&gt au même niveau seront gris.
+				</li>
+			</ol>
+		</div>
+	</section>
+</body>
+</html>

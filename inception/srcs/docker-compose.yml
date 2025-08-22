@@ -1,0 +1,78 @@
+# Ce docker compose, avec les mots de passe dans des variables d'environnement, est utilisé pour le développement. Certaines directives ne sont pas supportés en mode docker swarm casse couille, recommandée pour la production.
+
+services:                                 # Définit les différents services/conteneurs
+  
+  mariadb:                                # nom du service. Les autres conteneurs utiliseront ce nom se connecter (ex: DB_HOST='mariadb') 
+    build: requirements/mariaDB           # chemin vers le dockerfile qui construit l'image
+    image: mariadb:dev                    # Docker cherche d'abord localement, puis télécharge depuis Docker Hub si introuvable. Si il y a un 'build','build' construit l'image à partir du dockerfile et ''image' nomme l'image construite et l'utilise.
+    container_name: mon-joli-conteneur-mariadb
+    env_file:                             # Les variables ne sont pas disponibles pendant la construction. Elles ne sont injectées qu'au moment de l'exécution du conteneur (dans un CMD ou ENTRYPOINT du dockerfile)                
+      - .env
+      - .passwords_env
+    volumes:
+      - mariadb_vol:/var/lib/mysql             # Mappe un répertoire de l'hôte avec le répertoire du conteneur. Tout ce que MariaDB écrit dans /var/lib/mysql sera en fait enregistré sur l'hôte dans le dossier '/home/gebuqaj/data/mariadb_vol'. Attention! Lors de la création du conteneur, le volume "masque" le contenu du dossier mappé du conteneur. Le dossier '/var/lib/mysql' pointe sur un volume externe. Les fichiers restent dans le système de fichiers du conteneur, mais le point de montage /var/lib/mysql redirige vers le volume externe. C'est comme un "raccourci" qui cache ce qui était originalement à cet emplacement.
+    networks:
+      - inception
+    restart: unless-stopped				                                  # Configure le conteneur pour qu'il redémarre automatiquement sauf si vous l'arrêtez manuellement (docker compose stop).
+    healthcheck:                                                    # permet de surveiller l'état de santé du conteneur. starting (en cours de démarrage), healthy (le test passe) ou unhealthy (les tests ont échoués)
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]        # commande standard de MariaDB/MySQL qui tente de se connecter au serveur de base de données local (localhost). Si la connexion réussit, cela signifie que le serveur MariaDB est en cours d'exécution et répond aux requêtes. Le conteneur sera affiché avec une mention (healthy) dans un 'docker ps'
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  
+  wordpress:
+    build: requirements/wordpress
+    image: wordpress:dev
+    container_name: motpresse
+    env_file:                             
+      - .env
+      - .passwords_env
+    volumes:
+     - wordpress_vol:/var/www/wordpress
+    depends_on:   # attend que le conteneur soit démarré
+      mariadb:
+        condition:  service_healthy
+   # Le conteneur 'wordpress' se lance une fois que le conteneur 'mariadb' est healthy. Sans la condition 'healthy', le conteneur wordpress se lançe dès que le conteneur mariadb est lancé.
+    networks:
+      - inception
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "pgrep", "php-fpm82"] # Renvoie les pids des processus php-fpm82 et le code de sortie 0. Renvoie code de sortie 1 si aucun processus.
+      interval: 3s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  nginx:
+    build: requirements/nginx
+    image: nginx:dev
+    container_name: endjincss
+    ports:
+      - 443:443   # Mappe le port 443 du conteneur au port 443 de l'hôte.
+    volumes:
+      - wordpress_vol:/var/www/wordpress
+    depends_on: 
+      wordpress:
+        condition: service_healthy
+    networks:
+      - inception
+    restart: unless-stopped
+
+networks:
+  inception:
+    name: inception_reso
+    driver: bridge
+
+volumes:
+  mariadb_vol:
+    driver: local
+    driver_opts:
+      type: none    # Indique à Docker qu'on ne veut pas qu'il crée automatiquement un volume géré. On va spécifier manuellement.
+      o: bind       # 'o' = options. 'bind' lie un répertoire EXISTANT de l'hôte à un emplacement de conteneur.
+      device: /home/gebuqaj/data/mariadb_vol    # le répertoire à mapper doit exister sur l'hôte.
+  wordpress_vol:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/gebuqaj/data/wordpress_vol
