@@ -500,9 +500,8 @@ Utilisation:
 0. Initialiser le Swarm
 `docker swarm init`
 Désigne la machine hôte comme le premier noeud gestionnaire d'un nouveau cluster Swarm. Nécessaire pour créer des secrets.
-
   
-
+  
 1. Créer le secret
 `docker secret create mon_secret /chemin/vers/mon_fichier_secret.txt`
 crée un secret 'mon_secret' dans Docker Swarm à partir d'un fichier. 
@@ -515,9 +514,8 @@ ou
 `docker secret ls` liste les secrets
 
 Stocker un secret dans un fichier sur la machine hôte n'est pas recommandé en production.
-
   
-
+  
 2. Associer le secret à un service via docker compose
 
 ```yaml
@@ -530,16 +528,14 @@ services:
 
 Le paramètre `external: true` indique que le secret est déjà créé dans le cluster Swarm.
 Si un fichier est défini dans la section 'secrets' du docker-compose, docker créera le secret automatiquement sous le nom 'nom_de_mon_app_nom_du_fichier' (nom de votre app + underscore + fichier)
-
   
-
+  
 3. Accéder au secret dans le conteneur  
 Accessible dans le répertoire `/run/secrets/` avec le même nom que le secret.
 
 `cat /run/secrets/ma_cle_ssh`
-
   
-
+  
 4. Déployer votre application  
 `docker stack deploy -c docker-compose.yml nom_de_mon_app`
 
