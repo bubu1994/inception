@@ -459,12 +459,10 @@ WordPress est un système de gestion de contenu (CMS) qui permet de créer et g�
 
 Wordpress est principalement codé en PHP.
 
-#### PHP
 PHP est un langage de programmation utilisé pour créer des sites web dynamiques.
 Le code PHP est exécuté sur le serveur web, et non dans le navigateur de l'utilisateur. Le serveur traite le code PHP et renvoie au navigateur un résultat, généralement du code HTML pur, que le navigateur peut ensuite afficher. C'est ce qui permet de créer des pages web "dynamiques", dont le contenu peut changer en fonction de l'utilisateur, des données d'une base de données, etc.
 
-#### PHP-FPM (FastCGI Process Manager)
-PHP-FPM est un serveur FastCGI pour PHP.
+PHP-FPM (FastCGI Process Manager) est un serveur FastCGI pour PHP.
 
 
 Pour fonctionner, wordpress a besoin:
@@ -504,6 +502,7 @@ Utilisation:
 Désigne la machine hôte comme le premier noeud gestionnaire d'un nouveau cluster Swarm. Nécessaire pour créer des secrets.
 
 
+
 1. Créer le secret
 `docker secret create mon_secret /chemin/vers/mon_fichier_secret.txt`
 crée un secret 'mon_secret' dans Docker Swarm à partir d'un fichier. 
@@ -518,14 +517,16 @@ ou
 Stocker un secret dans un fichier sur la machine hôte n'est pas recommandé en production.
 
 
-2. Associer le secret à un service via docker compose
-`version: '3.8'`
 
-`services:`
-  `mon_service:`
-    `image: nginx:latest`
-    `secrets:`
-      `- ma_cle_ssh`
+2. Associer le secret à un service via docker compose
+
+`version: '3.8'`  
+
+`services:`  
+  `mon_service:`  
+    `image: nginx:latest`  
+    `secrets:`  
+      `- ma_cle_ssh`  
 
 `secrets:`
   `ma_cle_ssh:`
@@ -535,10 +536,12 @@ Le paramètre `external: true` indique que le secret est déjà créé dans le c
 Si un fichier est défini dans la section 'secrets' du docker-compose, docker créera le secret automatiquement sous le nom 'nom_de_mon_app_nom_du_fichier' (nom de votre app + underscore + fichier)
 
 
+
 3. Accéder au secret dans le conteneur
 Accessible dans le répertoire `/run/secrets/` avec le même nom que le secret.
 
 `cat /run/secrets/ma_cle_ssh`
+
 
 
 4. Déployer votre application
@@ -549,7 +552,7 @@ Accessible dans le répertoire `/run/secrets/` avec le même nom que le secret.
 Pour sortir du mode Swarm et détruire le cluster:
 `docker swarm leave --force`
 
-Certaines directives du docker-compose ne sont pas supportées ou fonctionnent différemment en mode swarm; build, container_name, restart, depends_on, bridge,... Faites deux fichiers docker-compose si vous voulez utiliser Docker Secret.
+Certaines directives du docker-compose ne sont pas supportées ou fonctionnent différemment en mode swarm; build, container_name, restart, depends_on, bridge,... Faites un deuxième docker-compose si vous voulez utiliser Docker Secret.
 
 Si vous avez la flemme, n'utilisez pas docker secrets pour inception. Peut-être que votre futur employeur utilise Kubernets au lieu de Docker Swarm!
 
@@ -566,9 +569,11 @@ Si vous avez la flemme, n'utilisez pas docker secrets pour inception. Peut-être
 | **Utilisation recommandée** | Petits projets          | Projets complexes, production    |
 
 
+
 En développement, utiliser un docker-compose standard avec des variables d'environnement.
 En production, utiliser docker swarm et secrets.
 
+---
 ---
 ## Protocole
 
