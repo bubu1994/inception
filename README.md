@@ -495,7 +495,7 @@ Docker secrets est une bien meilleure option que les variables d'environnement p
 - **Non-persistance :** Le secret disparaît de la mémoire à l'arrêt du conteneur, ce qui rend plus difficile sa récupération par des moyens post-mortem.
 
 
-Utilisation:
+### Utilisation:
 
 0. Initialiser le Swarm  
 `docker swarm init`
@@ -867,25 +867,7 @@ Pour résumer :
 - **Interface** = moyens d’interagir (CLI/GUI).
 - **Services** = programmes de fond qui rendent l’OS pratique.
 
-+-----------------------------+  
-|   Applications / Programmes |  
-+-----------------------------+  
-|   Interface utilisateur     |  
-|   (Shell, GUI, etc.)        |  
-+-----------------------------+  
-|   Userland (commandes,      |  
-|   bibliothèques système,    |  
-|   services/daemons)         |  
-+-----------------------------+  
-|   Noyau (kernel)            |  
-|   - Gestion mémoire         |  
-|   - Gestion processus       |  
-|   - Système de fichiers     |  
-|   - Gestion périphériques   |  
-|   - Sécurité & permissions  |  
-+-----------------------------+  
-|   Matériel (CPU, RAM, I/O)  |  
-+-----------------------------+  
+<pre> ```text +-----------------------------+ | Applications / Programmes | +-----------------------------+ | Interface utilisateur | | (Shell, GUI, etc.) | +-----------------------------+ | Userland (commandes, | | bibliothèques système, | | services/daemons) | +-----------------------------+ | Noyau (kernel) | | - Gestion mémoire | | - Gestion processus | | - Système de fichiers | | - Gestion périphériques | | - Sécurité & permissions | +-----------------------------+ | Matériel (CPU, RAM, I/O) | +-----------------------------+ ``` </pre>
 
 - Le matériel est contrôlé par le noyau.
 - Le userland (outils, bibliothèques, services) repose sur le noyau.
