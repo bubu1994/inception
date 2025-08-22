@@ -5,54 +5,54 @@ Certains paragraphes se répètent, certains ne sont pas pertinents dans le cont
 
 
 Pour inception, je vous suggère de:
-- Regarder le cours de Mohamed Youssfi https://www.youtube.com/watch?v=hJpHCmJHOtw&t=18s.
-- Faire le workshop https://docs.docker.com/get-started/workshop/.
-- Télécharger une image alpine (ou debian)
-- Créer un conteneur de l'image alpine. Lisez un peu la documentation MariaDB. Télécharger, installer, configurer MariaDB. Créer une base de données et un utilisateur mysql. Une fois que vous avez compris, automatiser tout ça avec le dockerfile et refaites un conteneur en le mettant dans un réseau et en mappant un volume.
-- Faites la même chose pour nginx.
-- Pour une première prise en main de wordpress, lisez la docu et installer tout (wordpress, php, mariadb, nginx) dans un même conteneur de test. Configurer manuellement wordpress, essayer de mettre en place votre site wordpress, écrivez votre dockerfile. etc...
-- Orchestrer le tout avec docker-compose.
+1. Regarder le cours de Mohamed Youssfi https://www.youtube.com/watch?v=hJpHCmJHOtw&t=18s.
+2. Faire le workshop https://docs.docker.com/get-started/workshop/.
+3. Télécharger une image alpine (ou debian)
+4. Créer un conteneur de l'image alpine. Lisez un peu la documentation MariaDB. Télécharger, installer, configurer MariaDB. Créer une base de données et un utilisateur mysql. Une fois que vous avez compris, automatiser tout ça avec le dockerfile et refaites un conteneur en le mettant dans un réseau et en mappant un volume.
+5. Faites la même chose pour nginx.
+6. Pour une première prise en main de wordpress, lisez la docu et installer tout (wordpress, php, mariadb, nginx) dans un même conteneur de test. Configurer manuellement wordpress, essayer de mettre en place votre site wordpress, écrivez votre dockerfile. etc...
+7. Orchestrer le tout avec docker-compose.
 
-https://www.youtube.com/watch?v=hJpHCmJHOtw&t=18s
-https://docs.docker.com/get-started/workshop
-https://nginx.org/en/docs/beginners_guide.html
-https://nginx.org/en/docs/http/configuring_https_servers.html
-https://tuto.grademe.fr/inception/
-https://developer.wordpress.org/advanced-administration/before-install/howto-install/
+https://www.youtube.com/watch?v=hJpHCmJHOtw&t=18s  
+https://docs.docker.com/get-started/workshop  
+https://nginx.org/en/docs/beginners_guide.html  
+https://nginx.org/en/docs/http/configuring_https_servers.html  
+https://tuto.grademe.fr/inception/  
+https://developer.wordpress.org/advanced-administration/before-install/howto-install/  
 ...
 
----
+
 ---
 
 # INDEX
 
-[Docker - Introduction](#docker---introduction)
+- [Docker - Introduction](#docker---introduction)  
+- [Les composants Docker](#les-composants-docker)  
+- [Une seule application pour un conteneur](#une-seule-application-pour-un-conteneur)  
+- [Instructions principales du Dockerfile](#instructions-principales-du-dockerfile)  
+- [Commandes Docker](#commandes-docker)  
+- [Comment s'arrête un conteneur ? En arrêtant le PID1](#comment-sarrête-un-conteneur-en-arrêtant-le-pid1)  
+- [Alpine et Debian](#alpine-et-debian)  
+- [Le serveur web Nginx](#le-serveur-web-nginx)  
+- [MariaDB](#mariadb)  
+- [Wordpress et php-fpm](#wordpress-et-php-fpm)  
+- [Docker Swarm](#docker-swarm)  
+- [Docker Secrets](#docker-secrets)  
 
-[Les composants Docker](#les-composants-docker)
-[Une seule application pour un conteneur](#une-seule-application-pour-un-conteneur)
-[Instructions principales du Dockerfile](#instructions-principales-du-dockerfile)
-[Commandes Docker](#commandes-docker)
-[Comment s'arrête un conteneur ? En arrêtant le PID1](#comment-sarrête-un-conteneur-en-arrêtant-le-pid1)
-[Alpine et Debian](#alpine-et-debian)
-[Le serveur web Nginx](#le-serveur-web-nginx)
-[MariaDB](#mariadb)
-[Wordpress et php-fpm](#wordpress-et-php-fpm)
-[Docker Swarm](#docker-swarm)
-[Docker Secrets](#docker-secrets)
+- [Protocole](#protocole)  
+- [HTTP](#http)  
+- [SSL/TLS](#ssltls)  
+- [Pile réseau et TCP/IP](#pile-réseau-et-tcpip)  
+- [CGI](#cgi)  
+- [Socket](#socket)  
+- [DNS et résolution locale](#dns-et-résolution-locale)  
+- [Interface](#interface)  
+- [API](#api)  
+- [OS (Operating system)](#os-operating-system)  
 
-[Protocole](#protocole)
-[HTTP](#http)
-[SSL/TLS](#ssltls)
-[Pile réseau et TCP/IP](#pile-réseau-et-tcpip)
-[CGI](#cgi)
-[Socket](#socket)
-[DNS et résolution locale](#dns-et-résolution-locale)
-[Interface](#interface)
-[API](#api)
-[OS (Operating system)](#os-operating-system)
+- [Construction de mon infrastructure inception](#construction-de-mon-infrastructure-inception)  
+- [Fonctionnement d'Inception](#fonctionnement-dinception)  
 
-[Construction de mon infrastructure inception](#construction-de-mon-infrastructure-inception)
-[Fonctionnement d'Inception](#fonctionnement-dinception)
 
 
 
