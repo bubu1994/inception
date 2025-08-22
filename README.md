@@ -53,9 +53,9 @@ https://developer.wordpress.org/advanced-administration/before-install/howto-ins
 [Construction de mon infrastructure inception](#construction-de-mon-infrastructure-inception)  
 [Fonctionnement d'Inception](#fonctionnement-dinception)  
 
+---
 
-
-# Docker - Introduction
+## Docker - Introduction
 
 **Docker** est un outil qui permet de faire tourner des applications dans des conteneurs. Un conteneur est comme une petite boîte qui contient tout ce qu’il faut pour faire tourner une application : le code, les bibliothèques, les dépendances, etc. Peu importe l’ordinateur sur lequel on exécute le conteneur, **l'application fonctionnera toujours de la même manière**.
 
@@ -79,8 +79,8 @@ https://developer.wordpress.org/advanced-administration/before-install/howto-ins
 
 En résumé : une VM virtualise le matériel, alors qu’un conteneur virtualise uniquement l’espace applicatif.
 
-
-# Les composants Docker
+---
+## Les composants Docker
 
 ### **Docker Engine (Moteur Docker)**
 
@@ -151,7 +151,7 @@ Intégré à Docker, il est plus simple à configurer et adapté aux petits/moye
 Kubernets, plus complexe et puissant, largement adopté dans l’industrie pour les gros environnements de production.
 
 ---
-# Une seule application pour un conteneur
+## Une seule application pour un conteneur
 
 Techniquement, un conteneur _peut_ contenir plusieurs applications, mais ce n’est pas recommandé dans la philosophie Docker.  
 En général, on met une seule application principale par conteneur.
@@ -162,7 +162,7 @@ Raisons pour cette approche
 3. **Portabilité** : Un conteneur avec une seule application est plus prévisible et fonctionne de la même manière dans tous les environnements.
 
 ---
-# Instructions principales du Dockerfile
+## Instructions principales du Dockerfile
 
 **FROM** - Définit l'image de base à partir de laquelle construire votre image
 **RUN** - Exécute des commandes dans le conteneur pendant la construction
@@ -176,7 +176,7 @@ Raisons pour cette approche
 
 ---
 
-# Commandes Docker
+## Commandes Docker
 
 Listes non-exhaustives
 ### Images
@@ -250,12 +250,12 @@ Listes non-exhaustives
 | `docker-compose down --rmi all`        | Supprime les images créées avec `build`.                           |
 
 ---
-# Comment s'arrête un conteneur ? En arrêtant le PID1
+## Comment s'arrête un conteneur ? En arrêtant le PID1
 
 Le **PID 1** d’un conteneur Docker est **le premier processus lancé à l’intérieur du conteneur**, souvent spécifié par CMD ou ENTRYPOINT. Si une commande n'est pas spécifiée, c'est la commande de l'image de base qui sera lancée. Pour une image alpine ou debian, c'est un shell qui est lancé. Tant que PID1 tourne, le conteneur reste actif. Si le PID1 est interrompu, en sortant du shell par exemple, le conteneur s'arrête. Si le PID1 est un programme qui s'exécute en arrière-plan, le continuera à tourner même si vous en sortez. Si votre ENTRYPOINT d'un conteneur est un script, c'est tout ce script qui est le PID1. Avec la commande 'exec', vous pouvez remplacer le processus courant, votre script, par un autre qui ne s'arrêtera pas.
 
 ---
-# `latest` (la dernière version d'une image) n'est pas recommandé
+## `latest` (la dernière version d'une image) n'est pas recommandé
 
 Même s’il semble pratique, `latest` est **ambigu** :
 - Il **ne garantit pas une version stable ou reproductible**.
@@ -264,7 +264,7 @@ Même s’il semble pratique, `latest` est **ambigu** :
 
 ---
 
-# **Alpine et Debian**
+## **Alpine et Debian**
 
 **Alpine** et **Debian** sont deux distributions Linux couramment utilisées comme images de base pour les conteneurs Docker. Elles ont des caractéristiques très différentes, ce qui influence leur utilisation dans des environnements conteneurisés.
 ### Alpine Linux
