@@ -27,6 +27,7 @@ https://developer.wordpress.org/advanced-administration/before-install/howto-ins
 # INDEX
 
 [Docker - Introduction](#docker---introduction)
+
 [Les composants Docker](#les-composants-docker)
 [Une seule application pour un conteneur](#une-seule-application-pour-un-conteneur)
 [Instructions principales du Dockerfile](#instructions-principales-du-dockerfile)
