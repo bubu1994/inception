@@ -867,7 +867,27 @@ Pour résumer :
 - **Interface** = moyens d’interagir (CLI/GUI).
 - **Services** = programmes de fond qui rendent l’OS pratique.
 
-<pre> ```text +-----------------------------+ | Applications / Programmes | +-----------------------------+ | Interface utilisateur | | (Shell, GUI, etc.) | +-----------------------------+ | Userland (commandes, | | bibliothèques système, | | services/daemons) | +-----------------------------+ | Noyau (kernel) | | - Gestion mémoire | | - Gestion processus | | - Système de fichiers | | - Gestion périphériques | | - Sécurité & permissions | +-----------------------------+ | Matériel (CPU, RAM, I/O) | +-----------------------------+ ``` </pre>
+<pre>```
++-----------------------------+
+|   Applications / Programmes |
++-----------------------------+
+|   Interface utilisateur     |
+|   (Shell, GUI, etc.)        |
++-----------------------------+
+|   Userland (commandes,      |
+|   bibliothèques système,    |
+|   services/daemons)         |
++-----------------------------+
+|   Noyau (kernel)            |
+|   - Gestion mémoire         |
+|   - Gestion processus       |
+|   - Système de fichiers     |
+|   - Gestion périphériques   |
+|   - Sécurité & permissions  |
++-----------------------------+
+|   Matériel (CPU, RAM, I/O)  |
++-----------------------------+
+```</pre>
 
 - Le matériel est contrôlé par le noyau.
 - Le userland (outils, bibliothèques, services) repose sur le noyau.
@@ -958,9 +978,8 @@ Pour résumer :
 - Négociation TLS/SSL entre le navigateur et nginx pour établir une connexion sécurisée avec le certificat SSL.
 - Le trafic est dirigé vers le port 443 du conteneur nginx via le réseau interne Docker.
 - Nginx, configuré pour répondre au domaine 'gebuqaj.42.fr', reçoit la requête. La requête URI racine ('/') correspondant à un répertoire, nginx utilise la directive 'index' pour savoir qu'il doit servir 'index.php' depuis '/var/www/wordpress'.
-- Nginx accède aux fichiers WordPress via les volumes Docker partagés entre les conteneurs nginx et wordpress.
-- Nginx renvoie la requête au service wordpress sur le port 9000 (wordpress:9000), sur lequel php-fpm écoute, via le réseau Docker.
-- PHP-FPM exécute index.php, interroge mariadb sur le port 3306 du conteneur mariadb pour récolter les données et renvoie le résultat (du code HTML) à nginx.
+- Nginx renvoie la requête au service wordpress sur le port 9000 (wordpress:9000), sur lequel php-fpm écoute, via le réseau Docker. Le renvoi de la requête est accompagné d'informations, dont le chemin 'var/www/wordpress' pour trouver le fichier .
+- PHP-FPM trouve le fichier 'index.php' dans SON 'var/www/wordpress' qui est en fait le volume partagé par nginx et wordpress, l'exécute en interrogeant mariadb sur le port 3306 du conteneur mariadb pour récolter les données et renvoie le résultat (du code HTML) à nginx. Si Nginx doit seulement servir un fichier html, il ne passera pas php-fpm, il le servira directement.
 - Nginx sert le résultat final au navigateur via la connexion HTTPS sécurisée.
 - Poltronesofa, autentica qualita. Et voilà!
 
