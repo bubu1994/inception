@@ -26,37 +26,35 @@ https://developer.wordpress.org/advanced-administration/before-install/howto-ins
 
 # INDEX
 
-- [Docker - Introduction](#docker---introduction)  
-- [Les composants Docker](#les-composants-docker)  
-- [Une seule application pour un conteneur](#une-seule-application-pour-un-conteneur)  
-- [Instructions principales du Dockerfile](#instructions-principales-du-dockerfile)  
-- [Commandes Docker](#commandes-docker)  
-- [Comment s'arrête un conteneur ? En arrêtant le PID1](#comment-sarrête-un-conteneur-en-arrêtant-le-pid1)  
-- [Alpine et Debian](#alpine-et-debian)  
-- [Le serveur web Nginx](#le-serveur-web-nginx)  
-- [MariaDB](#mariadb)  
-- [Wordpress et php-fpm](#wordpress-et-php-fpm)  
-- [Docker Swarm](#docker-swarm)  
-- [Docker Secrets](#docker-secrets)  
+[Docker - Introduction](#docker---introduction)  
+[Les composants Docker](#les-composants-docker)  
+[Une seule application pour un conteneur](#une-seule-application-pour-un-conteneur)  
+[Instructions principales du Dockerfile](#instructions-principales-du-dockerfile)  
+[Commandes Docker](#commandes-docker)  
+[Comment s'arrête un conteneur ? En arrêtant le PID1](#comment-sarrête-un-conteneur-en-arrêtant-le-pid1)  
+[Alpine et Debian](#alpine-et-debian)  
+[Le serveur web Nginx](#le-serveur-web-nginx)  
+[MariaDB](#mariadb)  
+[Wordpress et php-fpm](#wordpress-et-php-fpm)  
+[Docker Swarm](#docker-swarm)  
+[Docker Secrets](#docker-secrets)  
 
-- [Protocole](#protocole)  
-- [HTTP](#http)  
-- [SSL/TLS](#ssltls)  
-- [Pile réseau et TCP/IP](#pile-réseau-et-tcpip)  
-- [CGI](#cgi)  
-- [Socket](#socket)  
-- [DNS et résolution locale](#dns-et-résolution-locale)  
-- [Interface](#interface)  
-- [API](#api)  
-- [OS (Operating system)](#os-operating-system)  
+[Protocole](#protocole)  
+[HTTP](#http)  
+[SSL/TLS](#ssltls)  
+[Pile réseau et TCP/IP](#pile-réseau-et-tcpip)  
+[CGI](#cgi)  
+[Socket](#socket)  
+[DNS et résolution locale](#dns-et-résolution-locale)  
+[Interface](#interface)  
+[API](#api)  
+[OS (Operating system)](#os-operating-system)  
 
-- [Construction de mon infrastructure inception](#construction-de-mon-infrastructure-inception)  
-- [Fonctionnement d'Inception](#fonctionnement-dinception)  
-
-
+[Construction de mon infrastructure inception](#construction-de-mon-infrastructure-inception)  
+[Fonctionnement d'Inception](#fonctionnement-dinception)  
 
 
----
+
 ## Docker - Introduction
 
 **Docker** est un outil qui permet de faire tourner des applications dans des conteneurs. Un conteneur est comme une petite boîte qui contient tout ce qu’il faut pour faire tourner une application : le code, les bibliothèques, les dépendances, etc. Peu importe l’ordinateur sur lequel on exécute le conteneur, **l'application fonctionnera toujours de la même manière**.
@@ -81,7 +79,7 @@ https://developer.wordpress.org/advanced-administration/before-install/howto-ins
 
 En résumé : une VM virtualise le matériel, alors qu’un conteneur virtualise uniquement l’espace applicatif.
 
----
+
 ## Les composants Docker
 
 ### **Docker Engine (Moteur Docker)**
