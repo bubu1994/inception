@@ -164,15 +164,15 @@ Raisons pour cette approche
 ---
 ## Instructions principales du Dockerfile
 
-**FROM** - Définit l'image de base à partir de laquelle construire votre image
-**RUN** - Exécute des commandes dans le conteneur pendant la construction
-**COPY** - Copie des fichiers/dossiers depuis l'hôte vers le conteneur
-**WORKDIR** - Définit le répertoire de travail pour les instructions suivantes
-**ENV** - Définit des variables d'environnement
-**EXPOSE** - Indique (ne publie pas) le port sur lequel l'application écoute
-**CMD** - Définit la commande par défaut à exécuter au démarrage du conteneur. Cette commande peut être écrasée lors de l'éxecution du conteneur.
-**ENTRYPOINT** - Définit le point d'entrée du conteneur (non modifiable)
-**VOLUME** - Crée un point de montage pour les données persistantes
+**FROM** - Définit l'image de base à partir de laquelle construire votre image  
+**RUN** - Exécute des commandes dans le conteneur pendant la construction  
+**COPY** - Copie des fichiers/dossiers depuis l'hôte vers le conteneur  
+**WORKDIR** - Définit le répertoire de travail pour les instructions suivantes  
+**ENV** - Définit des variables d'environnement  
+**EXPOSE** - Indique (ne publie pas) le port sur lequel l'application écoute  
+**CMD** - Définit la commande par défaut à exécuter au démarrage du conteneur. Cette commande peut être écrasée lors de l'éxecution du conteneur.  
+**ENTRYPOINT** - Définit le point d'entrée du conteneur (non modifiable)  
+**VOLUME** - Crée un point de montage pour les données persistantes  
 
 ---
 
